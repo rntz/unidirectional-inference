@@ -84,8 +84,8 @@
        (match type
          [`(,A -> ,B) #:when (exact-type? A) (values A B)]
          [`(,A -> ,_)
-          (error "cannot type-infer lambda with incomplete argument type")]
-         [_ (error "cannot synthesize type for lambda expression")]))
+          (error "I can't type-check a lambda with an incomplete argument type")]
+         [_ (error "I don't know what type to give this lambda expression")]))
      ;; check the body
      `(,A -> ,(check `((,x ,A) ,@env) M B))]
     [`(,M ,N)
