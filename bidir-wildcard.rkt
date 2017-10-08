@@ -1,7 +1,7 @@
 #lang racket
 
-;; fuzzy types A, B are of the forms:
-;;  | num | bool  -- base typed
+;; fuzzy types A, B are of the form:
+;;  | num | bool  -- base types
 ;;  | A -> B      -- functions
 ;;  | _           -- wildcard
 ;;
@@ -19,7 +19,7 @@
 ;; A typing environment associates variable names with exact types.
 (define env? (listof (list/c symbol? exact-type?)))
 
-;; terms M, N are one of:
+;; terms M, N are of the form:
 ;;  | L          -- a literal (boolean or number)
 ;;  | (the A M)  -- an annotated term
 ;;  | x          -- variable
