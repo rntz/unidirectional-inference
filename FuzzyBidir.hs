@@ -1,7 +1,6 @@
 {-# LANGUAGE DataKinds, KindSignatures, GADTs #-}
 module FuzzyBidir where
 
-import Data.Monoid
 import Control.Monad
 
 data IsFuzzy = Fuzzy | Exact deriving (Show, Eq, Ord)
