@@ -6,15 +6,15 @@
 ;;  | _           -- wildcard
 ;;
 ;; exact types E, F are the same, but disallow wildcards.
-(define (type/c exact?)
-  (flat-named-contract (if exact? 'exact-type 'fuzzy-type)
+(define (type/c name)
+  (flat-named-contract name
    (flat-rec-contract type?
-    (if exact? none/c '_)
+    (match name ['exact-type none/c] ['fuzzy-type '_])
     'num 'bool
     (list/c type? '-> type?))))
 
-(define exact-type? (type/c #t))
-(define fuzzy-type? (type/c #f))
+(define exact-type? (type/c 'exact-type))
+(define fuzzy-type? (type/c 'fuzzy-type))
 
 ;; A typing environment associates variable names with exact types.
 (define env? (listof (list/c symbol? exact-type?)))
